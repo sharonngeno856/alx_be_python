@@ -2,6 +2,7 @@ import unittest
 from simple_calculator import SimpleCalculator
 
 class TestSimpleCalculator(unittest.TestCase):
+
     def setUp(self):
         self.calc = SimpleCalculator()
 
@@ -16,4 +17,14 @@ class TestSimpleCalculator(unittest.TestCase):
         self.assertEqual(self.calc.subtract(0, 0), 0)
 
     def test_multiplication(self):
-        s
+        self.assertEqual(self.calc.multiply(2, 3), 6)
+        self.assertEqual(self.calc.multiply(-1, 3), -3)
+        self.assertEqual(self.calc.multiply(0, 10), 0)
+
+    def test_division(self):
+        self.assertEqual(self.calc.divide(10, 2), 5)
+        self.assertEqual(self.calc.divide(-6, 3), -2)
+        self.assertIsNone(self.calc.divide(10, 0))  # test division by zero
+
+if __name__ == '__main__':
+    unittest.main()
